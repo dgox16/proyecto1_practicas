@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %}Formulario{% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+    <script type="text/javascript" src="{% static jquery %}"></script>
+    {{ form.media }}
+{% endblock stylesheets %}
+{% block content %}
+    <div class="card card-nav-tabs col-md-7">
+        <div class="card-header card-header-primary">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#personas" data-toggle="tab">Personas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pld" data-toggle="tab">PLD</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#socio" data-toggle="tab">Socio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#trabajo" data-toggle="tab">Trabajo</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="tab-content bg text-center">
+                    <div class="tab-pane active" id="personas">{{ form }}</div>
+                    <div class="tab-pane" id="pld">{{ formPLD }}</div>
+                    <div class="tab-pane" id="socio">{{ formSocio }}</div>
+                    <div class="tab-pane" id="trabajo">{{ formTrabajo }}</div>
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary pull-right">Guardar</button>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+{% block javascripts %}
+{% endblock javascripts %}

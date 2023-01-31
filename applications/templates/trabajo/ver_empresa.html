@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+{% block title %}Ver empresa{% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Cambia los valores</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Nombre</label>
+                                {{ form.nombre }}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Domicilio</label>
+                                {{ form.domicilio }}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Empleos fijos</label>
+                                {{ form.empleosFijos }}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Telefono</label>
+                                {{ form.telefono }}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Frecuencia</label>
+                                {{ form.frecuencia }}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">Actualizar</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

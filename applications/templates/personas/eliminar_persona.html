@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+{% block title %}Eliminar persona{% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+{% block content %}
+    <div class="row">
+        <div class="card card-nav-tabs">
+            <h4 class="card-header card-header-warning">¿Realmente desea eliminar al usuario?</h4>
+            <div class="card-body">
+                <form method="post" action="/personas/eliminar/{{ persona.id }}/">
+                    {% csrf_token %}
+                    <h5 class="card-title">Se eliminara al usuario: {{ persona }}</h5>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

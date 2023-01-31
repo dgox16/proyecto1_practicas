@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+{% block title %}Todos trabajos{% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Lista de Trabajos:</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <th>Persona</th>
+                                <th>Empresa</th>
+                                <th>Fecha de trabajo</th>
+                                <th>Telefono</th>
+                                <th>Arraigo laboral anterior</th>
+                                <th>Ingresos por</th>
+                                <th>Ingreso ordinario</th>
+                                <th>Otros ingresos</th>
+                            </thead>
+                            <tbody>
+                                {% for trabajo in trabajos %}
+                                    <tr>
+                                        <td>{{ trabajo.persona }}</td>
+                                        <td>{{ trabajo.empresa }}</td>
+                                        <td>{{ trabajo.fechaTrabajo }}</td>
+                                        <td>{{ trabajo.telefono }}</td>
+                                        <td>{{ trabajo.arraigoLaboralAnterior }}</td>
+                                        <td>{{ trabajo.conceptoIngresos }}</td>
+                                        <td>{{ trabajo.igresoOrdinario }}</td>
+                                        <td>{{ trabajo.otrosIngresos }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

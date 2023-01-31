@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+{% block title %}Todos socios{% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Lista de Socios:</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <th>Persona</th>
+                                <th>CURP</th>
+                                <th>RFC</th>
+                                <th>Tipo de Identificacion</th>
+                                <th>Identificacion</th>
+                                <th>Email</th>
+                                <th>Domicilio</th>
+                                <th>PLD</th>
+                            </thead>
+                            <tbody>
+                                {% for socio in socios %}
+                                    <tr>
+                                        <td>{{ socio.persona }}</td>
+                                        <td>{{ socio.curp }}</td>
+                                        <td>{{ socio.rfc }}</td>
+                                        <td>{{ socio.get_Identificacion_display }}</td>
+                                        <td>{{ socio.NumeroIdentificacion }}</td>
+                                        <td>{{ socio.email }}</td>
+                                        <td>{{ socio.domicilio.calle.nombre }} {{ socio.domicilio.numero }}</td>
+                                        <td>{{ socio.pld }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

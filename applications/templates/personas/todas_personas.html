@@ -1,0 +1,75 @@
+{% extends "layouts/base.html" %}
+{% block title %}Todas las personas{% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Lista de personas:</h4>
+                </div>
+                <div class="card-body">
+                    <form class="navbar-form">
+                        <div class="input-group no-border">
+                            <input type="text"
+                                   value=""
+                                   class="form-control"
+                                   placeholder="Busca por nombre o apellidos..."
+                                   id="kword"
+                                   name="kword">
+                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i>
+                                <div class="ripple-container"></div>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Sexo</th>
+                                <th>Tipo</th>
+                                <th>Clasificacion</th>
+                                <th>Telefono</th>
+                                <th class="text-center">
+                                    ¿Deseas eliminar
+                                    <br>
+                                    un usuario?
+                                </th>
+                            </thead>
+                            <tbody>
+                                {% for persona in personas  %}
+                                    <tr>
+                                        <td class="text-primary">
+                                            <a href="/personas/{{ persona.id }}">{{ persona.identificador }}</a>
+                                        </td>
+                                        <td>{{ persona.nombre }}</td>
+                                        <td>{{ persona.apellidoPaterno }} {{ persona.apellidoMaterno }}</td>
+                                        {% if 'M' == persona.sexo %}
+                                            <td>Masculino</td>
+                                        {% else %}
+                                            <td>Femenino</td>
+                                        {% endif %}
+                                        <td>{{ persona.tipo }}</td>
+                                        <td>{{ persona.clasificacion }}</td>
+                                        <td>{{ persona.phone }}</td>
+                                        <td class="text-center">
+                                            <a href="/personas/eliminar/{{ persona.id }}" class="btn btn-primary">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}
