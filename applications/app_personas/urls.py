@@ -8,6 +8,7 @@ from .views import (
     Vista_todas_personas,
     VistaAgregarPersona,
     VistaAgregarTodo,
+    VistaModificarPersona,
 )
 
 app_name = "personas_app"
@@ -15,6 +16,7 @@ app_name = "personas_app"
 
 urlpatterns = [
     path("personas/", Vista_todas_personas.as_view(), name="todas_personas"),
+    path("personas/<pk>/", VistaModificarPersona.as_view(), name="modificar_persona"),
     path("agregar/", VistaAgregarTodo.as_view(), name="agregar"),
     path("personas/agregar", VistaAgregarPersona.as_view(), name="agregar_persona"),
     path(

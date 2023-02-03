@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DeleteView, ListView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from django_addanother.views import CreatePopupMixin
 
 from applications.app_PLD.forms import FormPld
@@ -63,6 +63,19 @@ class VistaAgregarPersona(LoginRequiredMixin, CreatePopupMixin, CreateView):
         context = super(VistaAgregarPersona, self).get_context_data(**kwargs)
         context["jquery"] = "admin/js/vendor/jquery/jquery.js"
         context["form"] = form
+        return context
+
+
+class VistaModificarPersona(LoginRequiredMixin, CreatePopupMixin, UpdateView):
+    template_name = "personas/agregar_persona.html"
+    login_url = "/login/"
+    model = Persona
+    form_class = FormPersona
+    success_url = reverse_lazy("personas_app:todas_personas")
+
+    def get_context_data(self, **kwargs):
+        context = super(VistaModificarPersona, self).get_context_data(**kwargs)
+        context["jquery"] = "admin/js/vendor/jquery/jquery.js"
         return context
 
 

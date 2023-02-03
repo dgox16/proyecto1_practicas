@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, ListView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, ListView, UpdateView
 from django.views.generic.edit import FormView
 from django_addanother.views import CreatePopupMixin
 
@@ -19,6 +20,19 @@ class VistaAgregarEmpresa(LoginRequiredMixin, CreatePopupMixin, CreateView):
         context = super(VistaAgregarEmpresa, self).get_context_data(**kwargs)
         context["jquery"] = "admin/js/vendor/jquery/jquery.js"
         context["form"] = form
+        return context
+
+
+class VistaModificarEmpresa(LoginRequiredMixin, CreatePopupMixin, UpdateView):
+    template_name = "trabajo/agregar_empresa.html"
+    login_url = "/login/"
+    model = Empresa
+    form_class = FormEmpresa
+    success_url = reverse_lazy("trabajo_app:todas_empresas")
+
+    def get_context_data(self, **kwargs):
+        context = super(VistaModificarEmpresa, self).get_context_data(**kwargs)
+        context["jquery"] = "admin/js/vendor/jquery/jquery.js"
         return context
 
 

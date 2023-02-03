@@ -53,13 +53,17 @@
             const elements = document.querySelectorAll('.related-widget-wrapper');
             elements.forEach((element) => {
               element.classList.add('row');
+              element.classList.add('container');
+              element.classList.add('col-md-12');
+              element.classList.add('justify-content-between');
+
             });
             const elements2 = document.querySelectorAll('.related-widget-wrapper-link');
             elements2.forEach((element2) => {
                 while (element2.firstChild) {
                     element2.removeChild(element2.firstChild);
                 }
-                element2.appendChild(document.createTextNode("Agregar otro"));
+                element2.appendChild(document.createTextNode("Agregar"));
                 element2.classList.add('btn');
                 element2.classList.add('btn-link');
                 element2.classList.add('col-md-1');
