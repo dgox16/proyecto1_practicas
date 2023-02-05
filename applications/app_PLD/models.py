@@ -6,7 +6,6 @@ from .managers import PldManager
 
 
 class Parentesco(models.Model):
-
     GENDER_TIPO = (
         ("F", "Familiar"),
         ("O", "Otros"),
@@ -32,7 +31,6 @@ class Parentesco(models.Model):
 
 
 class PldExpuesta(models.Model):
-
     funcionPublica = models.CharField(max_length=50, verbose_name="Funcion publica")
     familiarFuncionario = models.ForeignKey(Parentesco, on_delete=models.CASCADE)
     nombreFuncionario = models.CharField(
@@ -48,7 +46,6 @@ class PldExpuesta(models.Model):
 
 
 class Pldocupacion(models.Model):
-
     nombre = models.CharField(max_length=50, verbose_name="Nombre de Ocupación")
 
     class Meta:
@@ -60,7 +57,6 @@ class Pldocupacion(models.Model):
 
 
 class Pldespecificacion(models.Model):
-
     ocupacionPld = models.ForeignKey(Pldocupacion, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=50, verbose_name="Nombre de Especificación")
 
@@ -73,7 +69,6 @@ class Pldespecificacion(models.Model):
 
 
 class Pldactividad(models.Model):
-
     especificacionPld = models.ForeignKey(Pldespecificacion, on_delete=models.CASCADE)
     claveSiti = models.CharField(max_length=8, verbose_name="Clave SITI")
     nombre = models.CharField(max_length=50, verbose_name="Nombre de la actividad PLD")
@@ -87,7 +82,6 @@ class Pldactividad(models.Model):
 
 
 class Pld(models.Model):
-
     GENDER_EXPUESTA = (
         ("N", "No expuesta"),
         ("H", "Homonimo"),

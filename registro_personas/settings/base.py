@@ -3,7 +3,10 @@ import os
 from unipath import Path
 
 BASE_DIR = Path(__file__).ancestor(3)
-SESSION_COOKIE_AGE = 3600  # one hour in seconds
+SESSION_COOKIE_AGE = 86400
+DATETIME_FORMAT = "%Y-%m-%d %H:%M"
+USE_L10N = False
+
 
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

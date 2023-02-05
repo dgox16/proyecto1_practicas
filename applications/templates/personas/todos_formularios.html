@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %}
+{% block title %}Todos formularios{% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Lista de los formularios</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <th>Identificador</th>
+                                <th>Fecha de registro</th>
+                                <th>Persona</th>
+                                <th>Socio</th>
+                                <th>Trabajo</th>
+                                <th>PLD</th>
+                            </thead>
+                            <tbody>
+                                {% for formulario in formularios %}
+                                    <tr>
+                                        <td class="text-primary">
+                                            <a href="/formularios/{{ formulario.id }}">{{ formulario.id }}</a>
+                                        </td>
+                                        <td>{{ formulario.fechaRegistro }}</td>
+                                        <td>{{ formulario.persona }}</td>
+                                        <td>{{ formulario.socio }}</td>
+                                        <td>{{ formulario.trabajo }}</td>
+                                        <td>{{ formulario.pld }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

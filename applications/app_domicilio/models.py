@@ -23,7 +23,6 @@ class Calle(models.Model):
 
 
 class Domicilio(models.Model):
-
     cp = models.CharField(max_length=5, verbose_name="CP:")
     colonia = models.CharField(max_length=50, verbose_name="Barrio/Colonia")
     calle = models.ForeignKey(

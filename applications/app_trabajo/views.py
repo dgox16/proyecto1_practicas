@@ -1,13 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
-from django.views.generic.edit import FormView
 from django_addanother.views import CreatePopupMixin
 
-from applications.app_domicilio.models import Calle, Domicilio
-
-from .forms import FormEmpresa, FormFrecuencia, FormPuesto, FormSocio, FormTrabajo
-from .models import Empresa, Frecuencia, Puesto, Socio, Trabajo
+from .forms import FormEmpresa, FormFrecuencia, FormPuesto
+from .models import Empresa, Socio, Trabajo
 
 
 class VistaAgregarEmpresa(LoginRequiredMixin, CreatePopupMixin, CreateView):

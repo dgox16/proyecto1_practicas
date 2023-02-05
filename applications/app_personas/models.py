@@ -95,4 +95,18 @@ class Persona(models.Model):
         return self.nombre + " " + self.apellidoPaterno + " " + self.apellidoMaterno
 
 
-# Create your models here.
+class Formulario(models.Model):
+    socio = models.ForeignKey("app_trabajo.Socio", on_delete=models.PROTECT, default=1)
+    trabajo = models.ForeignKey(
+        "app_trabajo.Trabajo", on_delete=models.PROTECT, default=1
+    )
+    pld = models.ForeignKey("app_PLD.Pld", on_delete=models.PROTECT, default=1)
+    persona = models.ForeignKey(
+        "app_personas.Persona", on_delete=models.PROTECT, default=1
+    )
+    fechaRegistro = models.DateField(
+        auto_now_add=True, null=True, verbose_name="Fecha de registro:"
+    )
+
+    def __str__(self):
+        return str(self.fechaRegistro)

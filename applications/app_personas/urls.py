@@ -8,7 +8,9 @@ from .views import (
     Vista_todas_personas,
     VistaAgregarPersona,
     VistaAgregarTodo,
+    VistaModificarFormulario,
     VistaModificarPersona,
+    VistaTodosFormularios,
 )
 
 app_name = "personas_app"
@@ -29,4 +31,10 @@ urlpatterns = [
         name="agregar_clasificacion",
     ),
     path("personas/eliminar/<pk>/", EliminarPersona.as_view()),
+    path("formularios/", VistaTodosFormularios.as_view(), name="todos_formularios"),
+    path(
+        "formularios/<pk>/",
+        VistaModificarFormulario.as_view(),
+        name="modificar_formulario",
+    ),
 ]
