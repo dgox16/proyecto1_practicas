@@ -23,10 +23,6 @@ class FormPld(forms.ModelForm):
             "maximaCaptacion",
             "frecuenciaPrestamo",
             "maximoPrestamo",
-            "perfilFrecuenciaCaptacion",
-            "perfilMaximaCaptacion",
-            "perfilFrecuenciaPrestamo",
-            "perfilMaximoPrestamo",
             "tipoExpuesta",
             "personaExpuesta",
         )
@@ -56,26 +52,6 @@ class FormPld(forms.ModelForm):
                 }
             ),
             "maximoPrestamo": forms.NumberInput(
-                attrs={
-                    "class": "form-control mb-5",
-                }
-            ),
-            "perfilFrecuenciaCaptacion": forms.NumberInput(
-                attrs={
-                    "class": "form-control mb-5",
-                }
-            ),
-            "perfilMaximaCaptacion": forms.NumberInput(
-                attrs={
-                    "class": "form-control mb-5",
-                }
-            ),
-            "perfilFrecuenciaPrestamo": forms.NumberInput(
-                attrs={
-                    "class": "form-control mb-5",
-                }
-            ),
-            "perfilMaximoPrestamo": forms.NumberInput(
                 attrs={
                     "class": "form-control mb-5",
                 }
