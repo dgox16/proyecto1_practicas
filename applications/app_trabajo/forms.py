@@ -9,25 +9,14 @@ class FormSocio(forms.ModelForm):
     class Meta:
         model = Socio
         fields = (
-            "persona",
             "curp",
             "rfc",
             "Identificacion",
             "NumeroIdentificacion",
             "email",
             "domicilio",
-            "pld",
         )
         widgets = {
-            "persona": AddAnotherWidgetWrapper(
-                forms.Select(
-                    attrs={
-                        "class": "form-control selectpicker col-md-10 mb-5",
-                        "data-style": "btn btn-link",
-                    }
-                ),
-                reverse_lazy("personas_app:agregar_persona"),
-            ),
             "curp": forms.TextInput(
                 attrs={
                     "class": "form-control mb-5",
@@ -63,15 +52,6 @@ class FormSocio(forms.ModelForm):
                 ),
                 reverse_lazy("domicilio_app:agregar_domicilio"),
             ),
-            "pld": AddAnotherWidgetWrapper(
-                forms.Select(
-                    attrs={
-                        "class": "form-control selectpicker col-md-10",
-                        "data-style": "btn btn-link",
-                    }
-                ),
-                reverse_lazy("pld_app:agregar_PLD"),
-            ),
         }
 
 
@@ -79,7 +59,6 @@ class FormTrabajo(forms.ModelForm):
     class Meta:
         model = Trabajo
         fields = (
-            "persona",
             "empresa",
             "puesto",
             "arraigoLaboralAnterior",
@@ -89,15 +68,6 @@ class FormTrabajo(forms.ModelForm):
             "telefono",
         )
         widgets = {
-            "persona": AddAnotherWidgetWrapper(
-                forms.Select(
-                    attrs={
-                        "class": "form-control selectpicker col-md-10",
-                        "data-style": "btn btn-link",
-                    }
-                ),
-                reverse_lazy("personas_app:agregar_persona"),
-            ),
             "empresa": AddAnotherWidgetWrapper(
                 forms.Select(
                     attrs={

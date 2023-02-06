@@ -31,8 +31,12 @@ class VistaAgregarTodo(LoginRequiredMixin, CreatePopupMixin, CreateView):
         persona = persona_form.save(commit=False)
         if persona_form.is_valid() and pld_form.is_valid() and socio_form.is_valid():
             pld = pld_form.save(commit=False)
+            pld.persona = persona
             socio = socio_form.save(commit=False)
+            socio.persona = persona
+            socio.pld = pld
             trabajo = trabajo_form.save(commit=False)
+            trabajo.persona = persona
             persona.save()
             pld.save()
             socio.save()

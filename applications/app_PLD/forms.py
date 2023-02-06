@@ -18,7 +18,6 @@ class FormPld(forms.ModelForm):
     class Meta:
         model = Pld
         fields = (
-            "persona",
             "actividadPld",
             "frecuenciaCaptacion",
             "maximaCaptacion",
@@ -32,15 +31,6 @@ class FormPld(forms.ModelForm):
             "personaExpuesta",
         )
         widgets = {
-            "persona": AddAnotherWidgetWrapper(
-                forms.Select(
-                    attrs={
-                        "class": "form-control selectpicker col-md-10 mb-5",
-                        "data-style": "btn btn-link",
-                    }
-                ),
-                reverse_lazy("personas_app:agregar_persona"),
-            ),
             "actividadPld": AddAnotherWidgetWrapper(
                 forms.Select(
                     attrs={
