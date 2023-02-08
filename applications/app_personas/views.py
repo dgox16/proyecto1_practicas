@@ -4,6 +4,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from django_addanother.views import CreatePopupMixin
 
+from applications.app_pages.views import BarraLateral
 from applications.app_PLD.forms import FormPld
 from applications.app_PLD.models import Pld
 from applications.app_trabajo.forms import FormSocio, FormTrabajo
@@ -13,7 +14,7 @@ from .forms import FormPersona
 from .models import Clasificacion, Formulario, Persona, Sucursal, Tipo
 
 
-class VistaAgregarTodo(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView):
     template_name = "personas/formulario.html"
     login_url = "/login/"
     success_url = reverse_lazy("personas_app:todas_personas")
@@ -67,7 +68,9 @@ class VistaAgregarTodo(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return context
 
 
-class VistaAgregarPersona(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarPersona(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "personas/agregar_persona.html"
     login_url = "/login/"
     form_class = FormPersona
@@ -80,7 +83,9 @@ class VistaAgregarPersona(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return context
 
 
-class VistaModificarPersona(LoginRequiredMixin, CreatePopupMixin, UpdateView):
+class VistaModificarPersona(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, UpdateView
+):
     template_name = "personas/agregar_persona.html"
     login_url = "/login/"
     model = Persona
@@ -93,25 +98,25 @@ class VistaModificarPersona(LoginRequiredMixin, CreatePopupMixin, UpdateView):
         return context
 
 
-class AgregarSucursal(CreatePopupMixin, CreateView):
+class AgregarSucursal(BarraLateral, CreatePopupMixin, CreateView):
     template_name = "personas/agregar_sucursal.html"
     model = Sucursal
     fields = ["name"]
 
 
-class AgregarTipo(CreatePopupMixin, CreateView):
+class AgregarTipo(BarraLateral, CreatePopupMixin, CreateView):
     template_name = "personas/agregar_tipo.html"
     model = Tipo
     fields = ["name"]
 
 
-class AgregarClasificacion(CreatePopupMixin, CreateView):
+class AgregarClasificacion(BarraLateral, CreatePopupMixin, CreateView):
     template_name = "personas/agregar_clasificacion.html"
     model = Clasificacion
     fields = ["name"]
 
 
-class Vista_todas_personas(LoginRequiredMixin, ListView):
+class Vista_todas_personas(BarraLateral, LoginRequiredMixin, ListView):
     template_name = "personas/todas_personas.html"
     context_object_name = "personas"
     login_url = "/login/"
@@ -122,21 +127,21 @@ class Vista_todas_personas(LoginRequiredMixin, ListView):
         return queryset
 
 
-class EliminarPersona(LoginRequiredMixin, DeleteView):
+class EliminarPersona(BarraLateral, LoginRequiredMixin, DeleteView):
     template_name = "personas/eliminar_persona.html"
     login_url = "/login/"
     model = Persona
     success_url = "/personas"
 
 
-class VistaTodosFormularios(LoginRequiredMixin, ListView):
+class VistaTodosFormularios(BarraLateral, LoginRequiredMixin, ListView):
     template_name = "personas/todos_formularios.html"
     context_object_name = "formularios"
     login_url = "/login/"
     model = Formulario
 
 
-class VistaModificarFormulario(LoginRequiredMixin, UpdateView):
+class VistaModificarFormulario(BarraLateral, LoginRequiredMixin, UpdateView):
     template_name = "personas/formulario.html"
     login_url = "/login/"
     success_url = reverse_lazy("personas_app:todas_personas")

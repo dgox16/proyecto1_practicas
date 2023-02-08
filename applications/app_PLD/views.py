@@ -2,6 +2,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, ListView
 from django_addanother.views import CreatePopupMixin
 
+from applications.app_pages.views import BarraLateral
+
 from .forms import (
     FormParentesco,
     FormPld,
@@ -13,7 +15,7 @@ from .forms import (
 from .models import Pld
 
 
-class VistaAgregarPld(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarPld(BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView):
     template_name = "pld/agregar_pld.html"
     login_url = "/login/"
     form_class = FormPld
@@ -26,7 +28,9 @@ class VistaAgregarPld(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return context
 
 
-class VistaAgregarPldActividad(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarPldActividad(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "pld/agregar_pldactividad.html"
     login_url = "/login/"
     form_class = FormPldActividad
@@ -39,7 +43,9 @@ class VistaAgregarPldActividad(LoginRequiredMixin, CreatePopupMixin, CreateView)
         return context
 
 
-class VistaAgregarPldExpuesta(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarPldExpuesta(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "pld/agregar_pldexpuesta.html"
     login_url = "/login/"
     form_class = FormPldExpuesta
@@ -52,7 +58,9 @@ class VistaAgregarPldExpuesta(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return context
 
 
-class VistaAgregarParentesco(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarParentesco(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "pld/agregar_parentesco.html"
     login_url = "/login/"
     form_class = FormParentesco
@@ -65,7 +73,9 @@ class VistaAgregarParentesco(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return context
 
 
-class VistaAgregarPldEspecificacion(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarPldEspecificacion(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "pld/agregar_pldespecificacion.html"
     login_url = "/login/"
     form_class = FormPldEspecificacion
@@ -78,7 +88,9 @@ class VistaAgregarPldEspecificacion(LoginRequiredMixin, CreatePopupMixin, Create
         return context
 
 
-class VistaAgregarPldOcupacion(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarPldOcupacion(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "pld/agregar_pldocupacion.html"
     login_url = "/login/"
     form_class = FormPldOcupacion
@@ -91,7 +103,7 @@ class VistaAgregarPldOcupacion(LoginRequiredMixin, CreatePopupMixin, CreateView)
         return context
 
 
-class VerPLD(LoginRequiredMixin, ListView):
+class VerPLD(BarraLateral, LoginRequiredMixin, ListView):
     template_name = "pld/todos_pld.html"
     context_object_name = "pld"
     model = Pld

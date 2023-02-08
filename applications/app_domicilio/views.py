@@ -2,10 +2,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 from django_addanother.views import CreatePopupMixin
 
+from applications.app_pages.views import BarraLateral
+
 from .forms import FormCalle, FormDomicilio
 
 
-class VistaAgregarDomicilio(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarDomicilio(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "domicilio/agregar_domicilio.html"
     login_url = "/login/"
     form_class = FormDomicilio
@@ -18,7 +22,7 @@ class VistaAgregarDomicilio(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return context
 
 
-class VistaAgregarCalle(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarCalle(BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView):
     template_name = "domicilio/agregar_calle.html"
     login_url = "/login/"
     form_class = FormCalle

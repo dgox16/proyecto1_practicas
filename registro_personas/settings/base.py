@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "applications.app_domicilio",
     "applications.app_PLD",
     "applications.app_trabajo",
+    "applications.app_pages",
 ]
 
 MIDDLEWARE = [

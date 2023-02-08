@@ -3,11 +3,15 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
 from django_addanother.views import CreatePopupMixin
 
+from applications.app_pages.views import BarraLateral
+
 from .forms import FormEmpresa, FormFrecuencia, FormPuesto
 from .models import Empresa, Socio, Trabajo
 
 
-class VistaAgregarEmpresa(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarEmpresa(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "trabajo/agregar_empresa.html"
     login_url = "/login/"
     form_class = FormEmpresa
@@ -20,7 +24,9 @@ class VistaAgregarEmpresa(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return context
 
 
-class VistaModificarEmpresa(LoginRequiredMixin, CreatePopupMixin, UpdateView):
+class VistaModificarEmpresa(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, UpdateView
+):
     template_name = "trabajo/agregar_empresa.html"
     login_url = "/login/"
     model = Empresa
@@ -33,7 +39,9 @@ class VistaModificarEmpresa(LoginRequiredMixin, CreatePopupMixin, UpdateView):
         return context
 
 
-class VistaAgregarFrecuencia(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarFrecuencia(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "trabajo/agregar_frecuencia.html"
     login_url = "/login/"
     form_class = FormFrecuencia
@@ -46,7 +54,9 @@ class VistaAgregarFrecuencia(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return context
 
 
-class VistaAgregarPuesto(LoginRequiredMixin, CreatePopupMixin, CreateView):
+class VistaAgregarPuesto(
+    BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView
+):
     template_name = "trabajo/agregar_puesto.html"
     login_url = "/login/"
     form_class = FormPuesto
@@ -59,7 +69,7 @@ class VistaAgregarPuesto(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return context
 
 
-class Vista_todas_empresas(LoginRequiredMixin, ListView):
+class Vista_todas_empresas(BarraLateral, LoginRequiredMixin, ListView):
     template_name = "trabajo/todas_empresas.html"
     context_object_name = "empresas"
     login_url = "/login/"
@@ -70,14 +80,14 @@ class Vista_todas_empresas(LoginRequiredMixin, ListView):
         return queryset
 
 
-class Vista_todos_socios(LoginRequiredMixin, ListView):
+class Vista_todos_socios(BarraLateral, LoginRequiredMixin, ListView):
     template_name = "trabajo/todos_socios.html"
     context_object_name = "socios"
     model = Socio
     login_url = "/login/"
 
 
-class Vista_todos_trabajos(LoginRequiredMixin, ListView):
+class Vista_todos_trabajos(BarraLateral, LoginRequiredMixin, ListView):
     template_name = "trabajo/todos_trabajos.html"
     context_object_name = "trabajos"
     model = Trabajo
