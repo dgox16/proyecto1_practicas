@@ -6,30 +6,46 @@
         <a target="_blank"
            rel="noopener noreferrer"
            href="#"
-           class="simple-text logo-normal">App Administrativa</a>
-    </div>
-    <div class="sidebar-wrapper">
-        <ul class="nav">
-            {% if request.user.is_authenticated %}
-                {% for nav_link in nav_links %}
+           class="simple-text logo-normal">App Administrativa</a
+            >
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                {% if request.user.is_authenticated %}
+                    {% for link in links_principales %}
+                        <li class="nav-item {% if 'index' in segment %} active{% endif %}">
+                            <a class="nav-link" href="{{ link.url }}">
+                                <i class="material-icons">{{ link.icono }}</i>
+                                <p>{{ link.titulo }}</p>
+                            </a>
+                        </li>
+                    {% endfor %}
                     <li class="nav-item {% if 'index' in segment %} active{% endif %}">
-                        <a class="nav-link" href="{{ nav_link.url }}">
-                            <i class="material-icons">{{ nav_link.icono }}</i>
-                            <p>{{ nav_link.titulo }}</p>
-                        </a>
-                    </li>
-                {% endfor %}
-            {% else %}
-                <li class="nav-item active">
-                    <a class="nav-link"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       href="https://appseed.us/admin-dashboards/django-dashboard-material-pro">
-                        <i class="material-icons">unarchive</i>
-                        <p>PRO Version</p>
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-    </div>
-</div>
+                        <a class="nav-link dropdown-toggle"
+                           data-toggle="dropdown"
+                           href="javascript:;"
+                           role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">Catalogos</a
+                            >
+                            <div class="dropdown-menu">
+                                {% for link in links_catalogo_vistas %}
+                                    <a class="dropdown-item" href="{{ link.url }}">{{ link.titulo }}</a
+                                        >
+                                    {% endfor %}
+                                </div>
+                            </li>
+                        {% else %}
+                            <li class="nav-item active">
+                                <a class="nav-link"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   href="https://appseed.us/admin-dashboards/django-dashboard-material-pro">
+                                    <i class="material-icons">unarchive</i>
+                                    <p>PRO Version</p>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
