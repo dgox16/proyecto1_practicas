@@ -12,40 +12,143 @@
         <div class="sidebar-wrapper">
             <ul class="nav">
                 {% if request.user.is_authenticated %}
-                    {% for link in links_principales %}
-                        <li class="nav-item {% if 'index' in segment %} active{% endif %}">
-                            <a class="nav-link" href="{{ link.url }}">
-                                <i class="material-icons">{{ link.icono }}</i>
-                                <p>{{ link.titulo }}</p>
-                            </a>
-                        </li>
+                    <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                        <small>ACCIONES</small>
+                    </li>
+                    {% for link in links_acciones %}
+                        <a href="{{ link.url }}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="fa fa-user fa-fw mr-3"></span>
+                                <span class="menu-collapsed">{{ link.titulo }}</span>
+                            </div>
+                        </a>
                     {% endfor %}
-                    <li class="nav-item {% if 'index' in segment %} active{% endif %}">
-                        <a class="nav-link dropdown-toggle"
-                           data-toggle="dropdown"
-                           href="javascript:;"
-                           role="button"
-                           aria-haspopup="true"
-                           aria-expanded="false">Catalogos</a
-                            >
-                            <div class="dropdown-menu">
-                                {% for link in links_catalogo_vistas %}
-                                    <a class="dropdown-item" href="{{ link.url }}">{{ link.titulo }}</a
-                                        >
-                                    {% endfor %}
-                                </div>
-                            </li>
-                        {% else %}
-                            <li class="nav-item active">
-                                <a class="nav-link"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   href="https://appseed.us/admin-dashboards/django-dashboard-material-pro">
-                                    <i class="material-icons">unarchive</i>
-                                    <p>PRO Version</p>
+                    <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                        <small>CATALOGOS</small>
+                    </li>
+                    {% if links_catalogo_pld %}
+                        <a href="#submenu1"
+                           data-toggle="collapse"
+                           aria-expanded="false"
+                           class="list-group-item list-group-item-action flex-column align-items-start bg-light">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="fa fa-list fa-fw mr-3"></span>
+                                <span class="menu-collapsed">PLD</span>
+                                <span class="fa fa-caret-down fa-fw ml-auto"></span>
+                            </div>
+                        </a>
+                        <div id='submenu1' class="collapse sidebar-submenu">
+                            {% for link in links_catalogo_pld %}
+                                <a href="{{ link.url }}"
+                                   class="list-group-item list-group-item-action bg-dark text-white">
+                                    <span class="menu-collapsed">{{ link.titulo }}</span>
                                 </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if links_catalogo_trabajos %}
+                        <a href="#submenu2"
+                           data-toggle="collapse"
+                           aria-expanded="false"
+                           class="list-group-item list-group-item-action flex-column align-items-start bg-light">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="fa fa-list fa-fw mr-3"></span>
+                                <span class="menu-collapsed">Trabajo</span>
+                                <span class="fa fa-caret-down fa-fw ml-auto"></span>
+                            </div>
+                        </a>
+                        <div id='submenu2' class="collapse sidebar-submenu">
+                            {% for link in links_catalogo_trabajos %}
+                                <a href="{{ link.url }}"
+                                   class="list-group-item list-group-item-action bg-dark text-white">
+                                    <span class="menu-collapsed">{{ link.titulo }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if links_catalogo_domicilio %}
+                        <a href="#submenu5"
+                           data-toggle="collapse"
+                           aria-expanded="false"
+                           class="list-group-item list-group-item-action flex-column align-items-start bg-light">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="fa fa-list fa-fw mr-3"></span>
+                                <span class="menu-collapsed">Domicilio</span>
+                                <span class="fa fa-caret-down fa-fw ml-auto"></span>
+                            </div>
+                        </a>
+                        <div id='submenu5' class="collapse sidebar-submenu">
+                            {% for link in links_catalogo_domicilio %}
+                                <a href="{{ link.url }}"
+                                   class="list-group-item list-group-item-action bg-dark text-white">
+                                    <span class="menu-collapsed">{{ link.titulo }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if links_catalogo_persona %}
+                        <a href="#submenu3"
+                           data-toggle="collapse"
+                           aria-expanded="false"
+                           class="list-group-item list-group-item-action flex-column align-items-start bg-light">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="fa fa-list fa-fw mr-3"></span>
+                                <span class="menu-collapsed">Persona</span>
+                                <span class="fa fa-caret-down fa-fw ml-auto"></span>
+                            </div>
+                        </a>
+                        <div id='submenu3' class="collapse sidebar-submenu">
+                            {% for link in links_catalogo_persona %}
+                                <a href="{{ link.url }}"
+                                   class="list-group-item list-group-item-action bg-dark text-white">
+                                    <span class="menu-collapsed">{{ link.titulo }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if links_catalogo_formulario %}
+                        <a href="#submenu4"
+                           data-toggle="collapse"
+                           aria-expanded="false"
+                           class="list-group-item list-group-item-action flex-column align-items-start bg-light">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="fa fa-list fa-fw mr-3"></span>
+                                <span class="menu-collapsed">Formulario</span>
+                                <span class="fa fa-caret-down fa-fw ml-auto"></span>
+                            </div>
+                        </a>
+                        <div id='submenu4' class="collapse sidebar-submenu">
+                            {% for link in links_catalogo_formulario %}
+                                <a href="{{ link.url }}"
+                                   class="list-group-item list-group-item-action bg-dark text-white">
+                                    <span class="menu-collapsed">{{ link.titulo }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <a href="/logout"
+                       class="list-group-item list-group-item-action"
+                       style="position: absolute;
+                              bottom: 0;
+                              padding-bottom:2.0em">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-trash fa-fw mr-3"></span>
+                            <span class="menu-collapsed">Cerrar Sesión</span>
+                        </div>
+                    </a>
+                {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           href="https://appseed.us/admin-dashboards/django-dashboard-material-pro">
+                            <i class="material-icons">unarchive</i>
+                            <p>
+                                PRO Version
+                            </p>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
