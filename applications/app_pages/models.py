@@ -14,7 +14,9 @@ class BarraLinks(models.Model):
     titulo = models.CharField("Titulo:", max_length=50)
     url = models.CharField("URL:", max_length=50)
     orden = models.CharField("Orden:", max_length=50)
-    is_active = models.BooleanField("Esta activo")
+    solo_admin = models.BooleanField(
+        "Solo podran verlo el administrador", default=False
+    )
     tipo = models.IntegerField(choices=TIPO, default=1)
 
     class Meta:

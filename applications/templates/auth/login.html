@@ -8,14 +8,14 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title">Login</h4>
+                    <h4 class="card-title">Inicio de sesión</h4>
                 </div>
                 <div class="card-body">
                     <h6 class="card-category">
                         {% if msg %}
                             <span class="text-danger">{{ msg | safe }}</span>
                         {% else %}
-                            Add your credentials
+                            Llena los datos
                         {% endif %}
                     </h6>
                     <br />
@@ -25,7 +25,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">
-                                        Username
+                                        Usuario
                                     </label
                                     >
                                     {{ form.username }}
@@ -37,7 +37,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">
-                                        Password
+                                        Contraseña
                                     </label
                                     >
                                     {{ form.password }}
@@ -45,11 +45,11 @@
                             </div>
                         </div>
                         <br />
-                        <button type="submit" name="login" class="btn btn-primary pull-left">Login</button>
+                        <button type="submit" name="login" class="btn btn-primary pull-left">Iniciar</button>
                         &nbsp; &nbsp;
                         <span class="pull-right">
-                            Don't have an account?
-                            <a href="{% url 'register' %}" class="text-primary">Create</a
+                            ¿Aun no tienes una cuenta?
+                            <a href="{% url 'register' %}" class="text-primary">Crear una</a
                                 >
                             </span>
                             <div class="clearfix"></div>
