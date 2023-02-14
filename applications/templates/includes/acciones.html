@@ -1,0 +1,22 @@
+<li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+    <small>ACCIONES</small>
+</li>
+{% if user.groups.all.0.name != "administrador" %}
+    {% for link in links_acciones %}
+        <a href="{{ link.url }}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <span class="fa fa-user fa-fw mr-3"></span>
+                <span class="menu-collapsed">{{ link.titulo }}</span>
+            </div>
+        </a>
+    {% endfor %}
+{% else %}
+    {% for link in links_acciones_admin %}
+        <a href="{{ link.url }}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <span class="fa fa-user fa-fw mr-3"></span>
+                <span class="menu-collapsed">{{ link.titulo }}</span>
+            </div>
+        </a>
+    {% endfor %}
+{% endif %}
