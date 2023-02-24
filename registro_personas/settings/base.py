@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "applications.app_PLD",
     "applications.app_trabajo",
     "applications.app_pages",
+    "applications.app_polizas",
 ]
 
 MIDDLEWARE = [

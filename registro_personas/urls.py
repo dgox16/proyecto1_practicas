@@ -30,4 +30,5 @@ urlpatterns = [
     re_path("", include("applications.app_trabajo.urls")),
     re_path("", include("applications.app_PLD.urls")),
     re_path("", include("applications.app_domicilio.urls")),
+    re_path("", include("applications.app_polizas.urls")),
 ]
