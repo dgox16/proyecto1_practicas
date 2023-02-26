@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import HttpResponseRedirect, get_object_or_404
+from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView
 from django_addanother.views import CreatePopupMixin
@@ -28,16 +28,16 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
         poliza_form = self.form_class(request.POST)
         detalleP_form = self.form_class_detalle_poliza(request.POST)
         polizaE_form = self.form_class_poliza_egreso(request.POST)
-        print(polizaE_form)
 
         poliza = poliza_form.save(commit=False)
+        poliza.numero = 1
+        poliza.usuarioElabora = request.user
         if poliza_form.is_valid() and detalleP_form.is_valid():
             detallePoliza = detalleP_form.save(commit=False)
             detallePoliza.poliza = poliza
             poliza.save()
             detallePoliza.save()
             if polizaE_form.is_valid():
-                print("Aqui estoy---------------------------------------")
                 polizaEgreso = polizaE_form.save(commit=False)
                 polizaEgreso.poliza = poliza
                 polizaEgreso.save()

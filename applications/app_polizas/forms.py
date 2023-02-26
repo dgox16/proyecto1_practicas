@@ -17,14 +17,10 @@ class FormPoliza(forms.ModelForm):
         model = Poliza
         fields = (
             "tipo",
-            "numero",
             "sucursal",
             "fecha",
             "concepto",
-            "usuarioElabora",
             "usuarioAutoriza",
-            "aplicacion",
-            "fuente",
             "automatica",
         )
         widgets = {
@@ -32,11 +28,6 @@ class FormPoliza(forms.ModelForm):
                 attrs={
                     "class": "form-control selectpicker mb-5",
                     "data-style": "btn btn-link",
-                }
-            ),
-            "numero": forms.NumberInput(
-                attrs={
-                    "class": "form-control mb-5",
                 }
             ),
             "sucursal": AddAnotherWidgetWrapper(
@@ -61,27 +52,9 @@ class FormPoliza(forms.ModelForm):
                     "class": "form-control mb-5",
                 }
             ),
-            "usuarioElabora": forms.NumberInput(
+            "usuarioAutoriza": forms.NumberInput(
                 attrs={
                     "class": "form-control mb-5",
-                }
-            ),
-            "usuarioAutoriza": forms.Select(
-                attrs={
-                    "class": "form-control selectpicker mb-5",
-                    "data-style": "btn btn-link",
-                }
-            ),
-            "aplicacion": forms.Select(
-                attrs={
-                    "class": "form-control selectpicker mb-5",
-                    "data-style": "btn btn-link",
-                }
-            ),
-            "fuente": forms.Select(
-                attrs={
-                    "class": "form-control selectpicker mb-5",
-                    "data-style": "btn btn-link",
                 }
             ),
             "automatica": forms.CheckboxInput(attrs={}),

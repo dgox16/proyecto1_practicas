@@ -43,8 +43,8 @@ class Poliza(models.Model):
     fecha = models.DateTimeField(verbose_name="Fecha de poliza")
     fecharegistro = models.DateTimeField(auto_now=True)
     concepto = models.CharField(max_length=200, verbose_name="Concepto de la poliza")
-    usuarioElabora = models.IntegerField(verbose_name="Usuario Elabora:")
-    usuarioAutoriza = models.ForeignKey(
+    usuarioAutoriza = models.IntegerField(verbose_name="Usuario Elabora:")
+    usuarioElabora = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT,
         verbose_name="Usuario Autoriza:",
