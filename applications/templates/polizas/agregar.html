@@ -1,23 +1,29 @@
 {% extends "layouts/base.html" %}
 {% load static %}
-{% block title %}Formulario{% endblock %}
+{% block title %}Polizas{% endblock %}
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
     <script type="text/javascript" src="{% static jquery %}"></script>
     {{ form.media }}
 {% endblock stylesheets %}
 {% block content %}
-    <div class="card card-nav-tabs col-md-7">
+    <div class="card card-nav-tabs col-md-8">
         <div class="card-header card-header-primary">
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
-                    <ul class="nav nav-tabs" data-tabs="tabs">
+                    <ul class="nav nav-tabs" data-tabs="tabs" id="navba">
                         <li class="nav-item">
                             <a class="nav-link active" href="#personas" data-toggle="tab">Polizas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#pld" data-toggle="tab">Detalle de polizas</a>
                         </li>
+                        {% for o in '0'|make_list %}
+                            <li class="nav-item" id="tabp" style="display: none;">
+                                <a class="nav-link" href="#pld{{ forloop.counter }}" data-toggle="tab">Detalle de polizas</a>
+                            </li>
+                        {% endfor %}
+                        <button id="toggle" class="btn btn-secondary btn-sm">+ Agregar más detalles</button>
                     </ul>
                 </div>
             </div>
@@ -25,7 +31,7 @@
         <div class="card-body">
             <form method="post">
                 {% csrf_token %}
-                <div class="tab-content bg text-center">
+                <div class="tab-content bg text-center" id="contenedor-forms">
                     <div class="tab-pane active" id="personas">
                         {{ formPoliza.tipo.name }}
                         {{ formPoliza.tipo }}
@@ -40,6 +46,13 @@
                         {% endfor %}
                     </div>
                     <div class="tab-pane" id="pld">{{ formDetallePoliza }}</div>
+                    {% for o in '0'|make_list %}
+                        {% if forloop.counter == 1 %}
+                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ forloop.counter }}{{ formDetallePoliza1  }}</div>
+                        {% elif forloop.counter == 2 %}
+                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ forloop.counter }}{{ formDetallePoliza2  }}</div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <br>
                 <br>
@@ -48,18 +61,8 @@
             </form>
         </div>
     </div>
+    {% load static %}
+    <script src="{% static 'scripts/polizas.js' %}"></script>
 {% endblock content %}
 {% block javascripts %}
-    const el = document.getElementById('id_tipo');
-    const box = document.getElementById('poliza_egreso');
-    el.addEventListener('change', function handleChange(event) {
-    if (event.target.value === 'E') {
-    box.style.display = 'block';
-    } else {
-    box.style.display = 'none';
-    document.getElementById("id_beneficiario").required = false;
-    document.getElementById("id_banco").required = false;
-    document.getElementById("id_cheque").required = false;
-    }
-    });
 {% endblock javascripts %}

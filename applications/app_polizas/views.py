@@ -27,7 +27,9 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
     def post(self, request, *args, **kwargs):
         poliza_form = self.form_class(request.POST)
         detalleP_form = self.form_class_detalle_poliza(request.POST)
+        detalleP1_form = self.form_class_detalle_poliza(request.POST, prefix="_1")
         polizaE_form = self.form_class_poliza_egreso(request.POST)
+        detalleP_form = self.form_class_detalle_poliza(request.POST)
 
         poliza = poliza_form.save(commit=False)
         poliza.numero = 1
@@ -41,6 +43,11 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
                 polizaEgreso = polizaE_form.save(commit=False)
                 polizaEgreso.poliza = poliza
                 polizaEgreso.save()
+            if detalleP1_form.is_valid():
+                detallePoliza1 = detalleP1_form.save(commit=False)
+                detallePoliza1.poliza = poliza
+                detallePoliza1.save()
+
             return HttpResponseRedirect(reverse("personas_app:todos_formularios"))
         else:
             return self.form_invalid(**kwargs)
@@ -48,11 +55,15 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
     def get_context_data(self, **kwargs):
         form = FormPoliza()
         formPoliza = FormDetallePoliza()
-        formPolizaEgreso = FormPolizaEgreso
+        formPoliza1 = FormDetallePoliza(prefix="_1")
+        formPoliza2 = FormDetallePoliza(prefix="_2")
+        formPolizaEgreso = FormPolizaEgreso()
         context = super(VistaAgregarTodo, self).get_context_data(**kwargs)
         context["jquery"] = "admin/js/vendor/jquery/jquery.js"
         context["formPoliza"] = form
         context["formDetallePoliza"] = formPoliza
+        context["formDetallePoliza1"] = formPoliza1
+        context["formDetallePoliza2"] = formPoliza2
         context["formPolizaEgreso"] = formPolizaEgreso
         return context
 
