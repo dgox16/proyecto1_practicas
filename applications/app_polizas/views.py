@@ -28,6 +28,10 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
         poliza_form = self.form_class(request.POST)
         detalleP_form = self.form_class_detalle_poliza(request.POST)
         detalleP1_form = self.form_class_detalle_poliza(request.POST, prefix="_1")
+        detalleP2_form = self.form_class_detalle_poliza(request.POST, prefix="_2")
+        detalleP3_form = self.form_class_detalle_poliza(request.POST, prefix="_3")
+        detalleP4_form = self.form_class_detalle_poliza(request.POST, prefix="_4")
+        detalleP5_form = self.form_class_detalle_poliza(request.POST, prefix="_5")
         polizaE_form = self.form_class_poliza_egreso(request.POST)
         detalleP_form = self.form_class_detalle_poliza(request.POST)
 
@@ -47,6 +51,22 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
                 detallePoliza1 = detalleP1_form.save(commit=False)
                 detallePoliza1.poliza = poliza
                 detallePoliza1.save()
+            if detalleP2_form.is_valid():
+                detallePoliza2 = detalleP2_form.save(commit=False)
+                detallePoliza2.poliza = poliza
+                detallePoliza2.save()
+            if detalleP3_form.is_valid():
+                detallePoliza3 = detalleP3_form.save(commit=False)
+                detallePoliza3.poliza = poliza
+                detallePoliza3.save()
+            if detalleP4_form.is_valid():
+                detallePoliza4 = detalleP4_form.save(commit=False)
+                detallePoliza4.poliza = poliza
+                detallePoliza4.save()
+            if detalleP5_form.is_valid():
+                detallePoliza5 = detalleP5_form.save(commit=False)
+                detallePoliza5.poliza = poliza
+                detallePoliza5.save()
 
             return HttpResponseRedirect(reverse("personas_app:todos_formularios"))
         else:
@@ -57,6 +77,9 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
         formPoliza = FormDetallePoliza()
         formPoliza1 = FormDetallePoliza(prefix="_1")
         formPoliza2 = FormDetallePoliza(prefix="_2")
+        formPoliza3 = FormDetallePoliza(prefix="_3")
+        formPoliza4 = FormDetallePoliza(prefix="_4")
+        formPoliza5 = FormDetallePoliza(prefix="_5")
         formPolizaEgreso = FormPolizaEgreso()
         context = super(VistaAgregarTodo, self).get_context_data(**kwargs)
         context["jquery"] = "admin/js/vendor/jquery/jquery.js"
@@ -64,6 +87,9 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
         context["formDetallePoliza"] = formPoliza
         context["formDetallePoliza1"] = formPoliza1
         context["formDetallePoliza2"] = formPoliza2
+        context["formDetallePoliza3"] = formPoliza3
+        context["formDetallePoliza4"] = formPoliza4
+        context["formDetallePoliza5"] = formPoliza5
         context["formPolizaEgreso"] = formPolizaEgreso
         return context
 

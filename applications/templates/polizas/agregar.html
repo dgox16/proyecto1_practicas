@@ -7,7 +7,7 @@
     {{ form.media }}
 {% endblock stylesheets %}
 {% block content %}
-    <div class="card card-nav-tabs col-md-8">
+    <div class="card card-nav-tabs col-md-10">
         <div class="card-header card-header-primary">
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
@@ -18,12 +18,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#pld" data-toggle="tab">Detalle de polizas</a>
                         </li>
-                        {% for o in '0'|make_list %}
-                            <li class="nav-item" id="tabp" style="display: none;">
-                                <a class="nav-link" href="#pld{{ forloop.counter }}" data-toggle="tab">Detalle de polizas</a>
+                        {% for o in '01234'|make_list %}
+                            <li class="nav-item" id="tab{{ forloop.counter }}" style="display: none;">
+                                <a class="nav-link" href="#pld{{ forloop.counter }}" data-toggle="tab">Detalle de polizas {{ forloop.counter }}</a>
                             </li>
                         {% endfor %}
-                        <button id="toggle" class="btn btn-secondary btn-sm">+ Agregar más detalles</button>
+                        <button id="btnMas" class="btn btn-secondary btn-sm mr-2">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <button id="btnMenos" class="btn btn-secondary btn-sm">
+                            <i class="fa fa-minus"></i>
+                        </button>
                     </ul>
                 </div>
             </div>
@@ -46,11 +51,17 @@
                         {% endfor %}
                     </div>
                     <div class="tab-pane" id="pld">{{ formDetallePoliza }}</div>
-                    {% for o in '0'|make_list %}
+                    {% for o in '01234'|make_list %}
                         {% if forloop.counter == 1 %}
-                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ forloop.counter }}{{ formDetallePoliza1  }}</div>
+                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza1 }}</div>
                         {% elif forloop.counter == 2 %}
-                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ forloop.counter }}{{ formDetallePoliza2  }}</div>
+                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza2 }}</div>
+                        {% elif forloop.counter == 3 %}
+                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza3 }}</div>
+                        {% elif forloop.counter == 4 %}
+                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza4 }}</div>
+                        {% elif forloop.counter == 5 %}
+                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza5 }}</div>
                         {% endif %}
                     {% endfor %}
                 </div>
