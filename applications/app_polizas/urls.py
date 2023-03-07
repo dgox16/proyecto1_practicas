@@ -5,11 +5,13 @@ from .views import (
     VistaAgregarCuenta,
     VistaAgregarProveedor,
     VistaAgregarTodo,
+    VistaVerPolizas,
 )
 
 app_name = "polizas_app"
 urlpatterns = [
     path("polizas/agregar", VistaAgregarTodo.as_view(), name="agregar"),
+    path("polizas/", VistaVerPolizas.as_view(), name="ver_polizas"),
     path("polizas/cuenta/agregar", VistaAgregarCuenta.as_view(), name="agregar_cuenta"),
     path(
         "polizas/proveedor/agregar",

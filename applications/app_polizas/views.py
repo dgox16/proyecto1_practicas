@@ -1,10 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django_addanother.views import CreatePopupMixin
 
 from applications.app_pages.views import BarraLateral
+from applications.app_polizas.models import Poliza
 
 from .forms import (
     FormBanco,
@@ -19,7 +20,7 @@ from .forms import (
 class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, CreateView):
     template_name = "polizas/agregar.html"
     login_url = "/login/"
-    success_url = reverse_lazy("personas_app:todas_personas")
+    success_url = reverse_lazy("polizas_app:todas_polizas")
     form_class = FormPoliza
     form_class_detalle_poliza = FormDetallePoliza
     form_class_poliza_egreso = FormPolizaEgreso
@@ -68,7 +69,7 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
                 detallePoliza5.poliza = poliza
                 detallePoliza5.save()
 
-            return HttpResponseRedirect(reverse("personas_app:todos_formularios"))
+            return HttpResponseRedirect(reverse("polizas_app:todas_polizas"))
         else:
             return self.form_invalid(**kwargs)
 
@@ -92,6 +93,13 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
         context["formDetallePoliza5"] = formPoliza5
         context["formPolizaEgreso"] = formPolizaEgreso
         return context
+
+
+class VistaVerPolizas(BarraLateral, LoginRequiredMixin, ListView):
+    template_name = "polizas/ver_polizas.html"
+    login_url = "/login/"
+    context_object_name = "polizas"
+    model = Poliza
 
 
 class VistaAgregarCuenta(

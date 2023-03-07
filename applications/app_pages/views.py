@@ -28,4 +28,9 @@ class BarraLateral(ContextMixin):
             tipo=6, solo_admin=False
         )
         context["links_catalogo_domicilio_admin"] = BarraLinks.objects.filter(tipo=6)
+        context["links_catalogo_polizas"] = BarraLinks.objects.filter(
+            tipo=7, solo_admin=False
+        )
+        context["links_catalogo_polizas_admin"] = BarraLinks.objects.filter(tipo=7)
+
         return context

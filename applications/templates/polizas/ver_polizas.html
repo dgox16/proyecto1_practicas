@@ -1,0 +1,50 @@
+{% extends "layouts/base.html" %
+{% extends "layouts/base.html" %}
+{% block title %}Todos PLD{% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Lista de Polizas</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <th>idPoliza</th>
+                                <th>Tipo</th>
+                                <th>Numero</th>
+                                <th>Sucursal</th>
+                                <th>Fecha</th>
+                                <th>Concepto</th>
+                                <th>Beneficiario</th>
+                                <th>Automatica</th>
+                            </thead>
+                            <tbody>
+                                {% for p in polizas %}
+                                    <tr>
+                                        <td>{{ p.id }}</td>
+                                        <td>{{ p.get_tipo_display }}</td>
+                                        <td>{{ p.numero }}</td>
+                                        <td>{{ p.sucursal }}</td>
+                                        <td>{{ p.fecha|date:"M d, Y" }}</td>
+                                        <td>{{ p.concepto }}</td>
+                                        <td>{{ p.usuarioElabora }}</td>
+                                        <td>{{ p.automatica }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

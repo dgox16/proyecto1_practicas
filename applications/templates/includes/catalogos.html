@@ -216,3 +216,47 @@
         </div>
     {% endif %}
 {% endif %}
+{% if user.groups.all.0.name != "administrador" %}
+    {% if links_catalogo_polizas %}
+        <a href="#submenu5"
+           data-toggle="collapse"
+           aria-expanded="false"
+           class="list-group-item list-group-item-action flex-column align-items-start bg-light">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <span class="fa fa-list fa-fw mr-3"></span>
+                <span class="menu-collapsed">PLD</span>
+                <span class="fa fa-caret-down fa-fw ml-auto"></span>
+            </div>
+        </a>
+        <div id='submenu5' class="collapse sidebar-submenu">
+            {% for link in links_catalogo_polizas %}
+                <a href="{{ link.url }}"
+                   class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">{{ link.titulo }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% else %}
+    {% if links_catalogo_polizas %}
+        <a href="#submenu5"
+           data-toggle="collapse"
+           aria-expanded="false"
+           class="list-group-item list-group-item-action flex-column align-items-start bg-light">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <span class="fa fa-list fa-fw mr-3"></span>
+        <span class="menu-collapsed">Polizas</span>
+                <span class="fa fa-caret-down fa-fw ml-auto"></span>
+            </div>
+        </a>
+        <div id='submenu5' class="collapse sidebar-submenu">
+            {% for link in links_catalogo_polizas_admin %}
+                <a href="{{ link.url }}"
+                   class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">{{ link.titulo }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endif %}
+

@@ -9,6 +9,7 @@ class BarraLinks(models.Model):
         (4, "Catalogo personas"),
         (5, "Catalogo formularios"),
         (6, "Catalogo domicilo"),
+        (7, "Catalogo polizas"),
     )
 
     titulo = models.CharField("Titulo:", max_length=50)
