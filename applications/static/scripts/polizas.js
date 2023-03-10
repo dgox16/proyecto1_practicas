@@ -111,11 +111,11 @@ function visualizacionTab() {
 	}
 }
 
-const tab1 = document.getElementById("tab1");
-const tab2 = document.getElementById("tab2");
-const tab3 = document.getElementById("tab3");
-const tab4 = document.getElementById("tab4");
-const tab5 = document.getElementById("tab5");
+const tab1 = document.getElementById("pld1");
+const tab2 = document.getElementById("pld2");
+const tab3 = document.getElementById("pld3");
+const tab4 = document.getElementById("pld4");
+const tab5 = document.getElementById("pld5");
 const btnMas = document.getElementById("btnMas");
 const btnMenos = document.getElementById("btnMenos");
 let contador = 0;

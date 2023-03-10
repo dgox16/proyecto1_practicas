@@ -27,14 +27,13 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
 
     def post(self, request, *args, **kwargs):
         poliza_form = self.form_class(request.POST)
-        detalleP_form = self.form_class_detalle_poliza(request.POST)
+        detalleP_form = self.form_class_detalle_poliza(request.POST, prefix="_0")
         detalleP1_form = self.form_class_detalle_poliza(request.POST, prefix="_1")
         detalleP2_form = self.form_class_detalle_poliza(request.POST, prefix="_2")
         detalleP3_form = self.form_class_detalle_poliza(request.POST, prefix="_3")
         detalleP4_form = self.form_class_detalle_poliza(request.POST, prefix="_4")
         detalleP5_form = self.form_class_detalle_poliza(request.POST, prefix="_5")
         polizaE_form = self.form_class_poliza_egreso(request.POST)
-        detalleP_form = self.form_class_detalle_poliza(request.POST)
 
         poliza = poliza_form.save(commit=False)
         poliza.numero = 1
@@ -75,7 +74,7 @@ class VistaAgregarTodo(BarraLateral, LoginRequiredMixin, CreatePopupMixin, Creat
 
     def get_context_data(self, **kwargs):
         form = FormPoliza()
-        formPoliza = FormDetallePoliza()
+        formPoliza = FormDetallePoliza(prefix="_0")
         formPoliza1 = FormDetallePoliza(prefix="_1")
         formPoliza2 = FormDetallePoliza(prefix="_2")
         formPoliza3 = FormDetallePoliza(prefix="_3")

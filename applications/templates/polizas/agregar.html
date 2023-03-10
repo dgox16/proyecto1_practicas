@@ -1,79 +1,83 @@
 {% extends "layouts/base.html" %}
 {% load static %}
-{% block title %}Polizas{% endblock %}
+{% block title %}Agregar poliza{% endblock %}
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
     <script type="text/javascript" src="{% static jquery %}"></script>
     {{ form.media }}
 {% endblock stylesheets %}
 {% block content %}
-    <div class="card card-nav-tabs col-md-10">
-        <div class="card-header card-header-primary">
-            <div class="nav-tabs-navigation">
-                <div class="nav-tabs-wrapper">
-                    <ul class="nav nav-tabs" data-tabs="tabs" id="navba">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#personas" data-toggle="tab">Polizas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#pld" data-toggle="tab">Detalle de polizas</a>
-                        </li>
-                        {% for o in '01234'|make_list %}
-                            <li class="nav-item" id="tab{{ forloop.counter }}" style="display: none;">
-                                <a class="nav-link" href="#pld{{ forloop.counter }}" data-toggle="tab">Detalle de polizas {{ forloop.counter }}</a>
-                            </li>
-                        {% endfor %}
-                        <button id="btnMas" class="btn btn-secondary btn-sm mr-2">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                        <button id="btnMenos" class="btn btn-secondary btn-sm">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </ul>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Datos de la nueva poliza</h4>
+                    <p class="card-category">Ajusta cada uno de los valores siguientes</p>
                 </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <form method="post">
-                {% csrf_token %}
-                <div class="tab-content bg text-center" id="contenedor-forms">
-                    <div class="tab-pane active" id="personas">
-                        {{ formPoliza.tipo.name }}
-                        {{ formPoliza.tipo }}
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Concepto</label>
+                                {{ formPoliza.concepto }}
+                            </div>
+                            <div class="col-md-4">
+                                <label>Tipo</label>
+                                {{ formPoliza.tipo }}
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mt-4">Automatica</label>
+                                {{ formPoliza.automatica }}
+                            </div>
+                        </div>
                         <div id="poliza_egreso" class="card">
                             <div class="card-header card-header-rose">
                                 <h4 class="card-title">Datos de Poliza de egreso</h4>
                             </div>
-                            <div class="card-body">{{ formPolizaEgreso }}</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Beneficiario</label>
+                                        {{ formPolizaEgreso.beneficiario }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Cheque</label>
+                                        {{ formPolizaEgreso.cheque }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Banco</label>
+                                        {{ formPolizaEgreso.banco }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        {% for field in formPoliza %}
-                            {% if field.name != "tipo" %}{{ field.name }}{{ field }}{% endif %}
-                        {% endfor %}
-                    </div>
-                    <div class="tab-pane" id="pld">{{ formDetallePoliza }}</div>
-                    {% for o in '01234'|make_list %}
-                        {% if forloop.counter == 1 %}
-                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza1 }}</div>
-                        {% elif forloop.counter == 2 %}
-                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza2 }}</div>
-                        {% elif forloop.counter == 3 %}
-                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza3 }}</div>
-                        {% elif forloop.counter == 4 %}
-                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza4 }}</div>
-                        {% elif forloop.counter == 5 %}
-                            <div class="tab-pane" id="pld{{ forloop.counter }}">{{ formDetallePoliza5 }}</div>
-                        {% endif %}
-                    {% endfor %}
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Sucursal</label>
+                                {{ formPoliza.sucursal }}
+                            </div>
+                            <div class="col-md-4">
+                                <label>Fecha</label>
+                                {{ formPoliza.fecha }}
+                            </div>
+                            <div class="col-md-3">
+                                <label>Usuario que autoriza</label>
+                                {{ formPoliza.usuarioAutoriza }}
+                            </div>
+                        </div>
+                        {% include 'includes/detallesPolizas.html' %}
+                        <button type="submit" class="btn btn-primary pull-right">Guardar</button>
+                        <div class="clearfix"></div>
+                    </form>
                 </div>
-                <br>
-                <br>
-                <button type="submit" class="btn btn-primary pull-right">Guardar</button>
-                <div class="clearfix"></div>
-            </form>
+            </div>
         </div>
     </div>
     {% load static %}
     <script src="{% static 'scripts/polizas.js' %}"></script>
 {% endblock content %}
+<!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 {% endblock javascripts %}
+% endblock javascripts %}
