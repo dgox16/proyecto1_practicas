@@ -67,13 +67,13 @@ window.onload = visualizacionTab(numDetalles);
 btnMas.addEventListener("click", () => {
     if (contador < numDetalles) {
         contador++;
+        visualizacionTab(numDetalles);
     }
-    visualizacionTab(numDetalles);
 });
 
 btnMenos.addEventListener("click", () => {
     if (contador > 1) {
         contador--;
+        visualizacionTab(numDetalles);
     }
-    visualizacionTab(numDetalles);
 });
