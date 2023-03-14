@@ -12,306 +12,50 @@
             </div>
         </div>
         <div class="card-body">
-            <div id="pld">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label>Concepto</label>
-                        {{ formDetallePoliza.concepto }}
+            {% for form in forms %}
+                <div id="poliza_detalle{{ forloop.counter }}">
+                    <div class="row">
+                        <div class="col">
+                            <hr>
+                        </div>
+                        <div class="col-auto">DETALLE DE POLIZA {{ forloop.counter }}</div>
+                        <div class="col">
+                            <hr>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <label>Cuenta</label>
-                        {{ formDetallePoliza.cuenta }}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Concepto</label>
+                            {{ form.concepto }}
+                        </div>
+                        <div class="col-md-4">
+                            <label>Cuenta</label>
+                            {{ form.cuenta }}
+                        </div>
+                        <div class="col-md-4">
+                            <label>Proveedor</label>
+                            {{ form.proveedor }}
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <label>Proveedor</label>
-                        {{ formDetallePoliza.proveedor }}
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Cargo</label>
+                            {{ form.cargo }}
+                        </div>
+                        <div class="col-md-3">
+                            <label>Abono</label>
+                            {{ form.abono }}
+                        </div>
+                        <div class="col-md-2">
+                            <label>Tasa de IVA</label>
+                            {{ form.iva }}
+                        </div>
+                        <div class="col-md-4">
+                            <label>Sucursal</label>
+                            {{ form.sucursal }}
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label>Cargo</label>
-                        {{ formDetallePoliza.cargo }}
-                    </div>
-                    <div class="col-md-3">
-                        <label>Abono</label>
-                        {{ formDetallePoliza.abono }}
-                    </div>
-                    <div class="col-md-2">
-                        <label>Tasa de IVA</label>
-                        {{ formDetallePoliza.iva }}
-                    </div>
-                    <div class="col-md-4">
-                        <label>Sucursal</label>
-                        {{ formDetallePoliza.sucursal }}
-                    </div>
-                </div>
-            </div>
-            {% for o in '01234'|make_list %}
-                {% if forloop.counter == 1 %}
-                    <div id="pld{{ forloop.counter }}">
-                        <div class="row">
-                            <div class="col">
-                                <hr>
-                            </div>
-                            <div class="col-auto">DETALLE DE POLIZA {{ forloop.counter }}</div>
-                            <div class="col">
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>Concepto</label>
-                                {{ formDetallePoliza1.concepto }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>Cuenta</label>
-                                {{ formDetallePoliza1.cuenta }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>Proveedor</label>
-                                {{ formDetallePoliza1.proveedor }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>Cargo</label>
-                                {{ formDetallePoliza1.cargo }}
-                            </div>
-                            <div class="col-md-3">
-                                <label>Abono</label>
-                                {{ formDetallePoliza1.abono }}
-                            </div>
-                            <div class="col-md-2">
-                                <label>Tasa de IVA</label>
-                                {{ formDetallePoliza1.iva }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>Sucursal</label>
-                                {{ formDetallePoliza1.sucursal }}
-                            </div>
-                        </div>
-                    </div>
-                {% elif forloop.counter == 2 %}
-                    <div id="pld{{ forloop.counter }}">
-                        <div class="row">
-                            <div class="col">
-                                <hr>
-                            </div>
-                            <div class="col-auto">DETALLE DE POLIZA {{ forloop.counter }}</div>
-                            <div class="col">
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>Concepto</label>
-                                {{ formDetallePoliza2.concepto }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>Cuenta</label>
-                                {{ formDetallePoliza2.cuenta }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>Proveedor</label>
-                                {{ formDetallePoliza2.proveedor }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>Cargo</label>
-                                {{ formDetallePoliza2.cargo }}
-                            </div>
-                            <div class="col-md-3">
-                                <label>Abono</label>
-                                {{ formDetallePoliza2.abono }}
-                            </div>
-                            <div class="col-md-2">
-                                <label>Tasa de IVA</label>
-                                {{ formDetallePoliza2.iva }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>Sucursal</label>
-                                {{ formDetallePoliza2.sucursal }}
-                            </div>
-                        </div>
-                    </div>
-                {% elif forloop.counter == 3 %}
-                    <div id="pld{{ forloop.counter }}">
-                        <div class="row">
-                            <div class="col">
-                                <hr>
-                            </div>
-                            <div class="col-auto">DETALLE DE POLIZA {{ forloop.counter }}</div>
-                            <div class="col">
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>Concepto</label>
-                                {{ formDetallePoliza3.concepto }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Cuenta
-                                </label>
-                                {{ formDetallePoliza3.cuenta }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Proveedor
-                                </label>
-                                {{ formDetallePoliza3.proveedor }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>
-                                    Cargo
-                                </label>
-                                {{ formDetallePoliza3.cargo }}
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Abono
-                                </label>
-                                {{ formDetallePoliza3.abono }}
-                            </div>
-                            <div class="col-md-2">
-                                <label>
-                                    Tasa de IVA
-                                </label>
-                                {{ formDetallePoliza3.iva }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Sucursal
-                                </label>
-                                {{ formDetallePoliza3.sucursal }}
-                            </div>
-                        </div>
-                    </div>
-                {% elif forloop.counter == 4 %}
-                    <div id="pld{{ forloop.counter }}">
-                        <div class="row">
-                            <div class="col">
-                                <hr>
-                            </div>
-                            <div class="col-auto">
-                                DETALLE DE POLIZA {{ forloop.counter }}
-                            </div>
-                            <div class="col">
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>
-                                    Concepto
-                                </label>
-                                {{ formDetallePoliza4.concepto }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Cuenta
-                                </label>
-                                {{ formDetallePoliza4.cuenta }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Proveedor
-                                </label>
-                                {{ formDetallePoliza4.proveedor }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>
-                                    Cargo
-                                </label>
-                                {{ formDetallePoliza4.cargo }}
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Abono
-                                </label>
-                                {{ formDetallePoliza4.abono }}
-                            </div>
-                            <div class="col-md-2">
-                                <label>
-                                    Tasa de IVA
-                                </label>
-                                {{ formDetallePoliza4.iva }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Sucursal
-                                </label>
-                                {{ formDetallePoliza4.sucursal }}
-                            </div>
-                        </div>
-                    </div>
-                {% elif forloop.counter == 5 %}
-                    <div id="pld{{ forloop.counter }}">
-                        <div class="row">
-                            <div class="col">
-                                <hr>
-                            </div>
-                            <div class="col-auto">
-                                DETALLE DE POLIZA {{ forloop.counter }}
-                            </div>
-                            <div class="col">
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>
-                                    Concepto
-                                </label>
-                                {{ formDetallePoliza5.concepto }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Cuenta
-                                </label>
-                                {{ formDetallePoliza5.cuenta }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Proveedor
-                                </label>
-                                {{ formDetallePoliza5.proveedor }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>
-                                    Cargo
-                                </label>
-                                {{ formDetallePoliza5.cargo }}
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Abono
-                                </label>
-                                {{ formDetallePoliza5.abono }}
-                            </div>
-                            <div class="col-md-2">
-                                <label>
-                                    Tasa de IVA
-                                </label>
-                                {{ formDetallePoliza5.iva }}
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Sucursal
-                                </label>
-                                {{ formDetallePoliza5.sucursal }}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
             {% endfor %}
         </div>
     </div>
